@@ -30,9 +30,9 @@ jobs:
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: vhost264.cloudvhost.cn
-        username: webmaster@HA434896
-        password: IUpoQbjCd568roPi
+        server: ${{ secrets.FTPS_SERVER }}
+        username: ${{ secrets.FTPS_USERNAME }}
+        password: ${{ secrets.FTPS_PASSWORD }}
         server-dir: /WEB/
         exclude: .git*
           - .git*/**
@@ -46,7 +46,7 @@ jobs:
           - .github/**
           - .idea/**
     - name: inphp
-      run: curl https://sw.qiji.pw/in.php
+      run: curl ${{ secrets.CURL }}
 # - name: SSH connection to Actions
 # uses: P3TERX/debugger-action@master    
 # run: touch /tmp/keepalive
